@@ -13,11 +13,11 @@
   box-sizing: border-box;
 }
 
-.row {
+.rowa{
+   justify-content: center;
   width: 100%;
   display: flex;
   flex-wrap: wrap;       /* permite que se acomoden en varias filas */
-  justify-content: center;
   align-items: flex-start;
 }
 
@@ -56,6 +56,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   transition: 0.2s linear;
+  pointer-events: none;   /* 🔥 agregado para no bloquear clics */
 }
 
 .card:hover::after {
@@ -194,4 +195,13 @@
   border-radius: 10px;
   border: 2px solid #fFd700;
   transition: 0.25s linear;
+}
+
+.tituloequipo {
+  text-align: center;
+  font-family: "Comic Sans MS", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222;
+  margin: 20px 0;
 }
