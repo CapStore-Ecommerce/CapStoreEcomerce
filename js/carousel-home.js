@@ -11,7 +11,8 @@ const $owlCarousel = $("#carousel-home .owl-carousel").owlCarousel({
   nav: false,
   dots: true,
   autoplay: true,
-  autoplayTimeout: 3000, // velocidad en milisegundos (2 segundos)
+  autoplayTimeout: 9500, // 4 segundos → más natural
+  smartSpeed: 800,       // animación fluida (0.8s)
   responsive: {
     0: {
       dots: false

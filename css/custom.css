@@ -13,17 +13,20 @@
   box-sizing: border-box;
 }
 
-.rowa{
-   justify-content: center;
+.rowa {
+  justify-content: center;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;       /* permite que se acomoden en varias filas */
+  flex-wrap: wrap;
+  /* permite que se acomoden en varias filas */
   align-items: flex-start;
 }
 
 .column {
-  flex: 1 1 300px;       /* mínimo 300px, luego se ajusta */
-  max-width: 300px;      /* no crecen más de 300px */
+  flex: 1 1 300px;
+  /* mínimo 300px, luego se ajusta */
+  max-width: 300px;
+  /* no crecen más de 300px */
   margin: 10px;
   height: 100%;
 }
@@ -40,7 +43,6 @@
   text-align: center;
   border-radius: 10px;
   border: 2px solid #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all 0.3s linear;
 }
@@ -56,7 +58,8 @@
   border-radius: 8px;
   box-sizing: border-box;
   transition: 0.2s linear;
-  pointer-events: none;   /* 🔥 agregado para no bloquear clics */
+  pointer-events: none;
+  /* 🔥 agregado para no bloquear clics */
 }
 
 .card:hover::after {
@@ -205,3 +208,40 @@
   color: #222;
   margin: 20px 0;
 }
+
+.swiper-button-next, .swiper-button-prev {
+    color: #ffd700 !important;
+}
+
+/* Ajustes del slider */
+.team-slider {
+  width: 100%;
+  padding: 30px 0;
+}
+
+.team-slider .swiper-slide {
+  width: auto;
+  /* deja que Swiper calcule el ancho */
+  display: flex;
+  /* si quieres centrar el card está bien */
+  justify-content: center;
+}
+
+/* Ajustar que cada card mantenga su ancho */
+.card {
+  width: 280px;
+  /* ancho fijo */
+  margin: auto;
+}
+
+/* Ajuste a los botones Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffd700;
+  /* amarillo */
+}
+
+.swiper-pagination-bullet {
+  background: #ffd700;
+}
+

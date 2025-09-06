@@ -31,6 +31,11 @@
 	<!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">
 
+	<!-- Incluye Swiper desde CDN -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	<script src="js/Swiper.js"></script>
+
 </head>
 
 <body>
@@ -353,117 +358,125 @@
 							<br>
 						</div>
 					</div>
-					<h1 class="tituloequipo">Nuestro Equipo</h1>
-					<div class="rowa">
-						<div class="column">
-							<div class="card">
-								<div class="img-wrap">
-									<img src="img/Capstore/arquitecto.jpg" alt="">
-								</div>
-								<div class="content">
-									<h2 class="name">Juan David Garzon Larrota</h2>
+					<!-- Título -->
+					<h2 class="tituloequipo">Nuestro Equipo</h2>
 
-									<p class="company">Arquitecto</p>
-									<ul class="social-media">
-										<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
-										<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
-										<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
-										<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
-									</ul>
-									<a href="https://mail.google.com/mail/?view=cm&fs=1&to=juangarzonl1722@gmail.com"
-										target="_blank" class="btn">
-										Contacto
-									</a>
+					<!-- Swiper -->
+					<div class="swiper team-slider">
+						<div class="swiper-wrapper">
+
+							<!-- Arquitecto -->
+							<div class="swiper-slide">
+								<div class="card">
+									<div class="img-wrap">
+										<img src="img/Capstore/arquitecto.jpg" alt="">
+									</div>
+									<div class="content">
+										<h2 class="name">Juan David Garzon Larrota</h2>
+										<p class="company">Arquitecto</p>
+										<ul class="social-media">
+											<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
+											<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
+											<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
+											<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
+										</ul>
+										<a href="https://mail.google.com/mail/?view=cm&fs=1&to=juangarzonl1722@gmail.com"
+											target="_blank" class="btn">Contacto</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="column">
-							<div class="card">
-								<div class="img-wrap">
-									<img src="img/Capstore/equipodesarrollo.jpg" alt="">
-								</div>
-								<div class="content">
-									<h2 class="name">Thomas Santiago Arevalo Santos</h2>
-									<p class="company">Equipo De Desarrollo</p>
-									<ul class="social-media">
-										<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
-										<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
-										<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
-										<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
-									</ul>
-									<a href="https://mail.google.com/mail/?view=cm&fs=1&to=thomas.aprendizsena@gmail.com"
-										target="_blank" class="btn">
-										Contacto
-									</a>
+
+							<!-- Equipo Desarrollo -->
+							<div class="swiper-slide">
+								<div class="card">
+									<div class="img-wrap">
+										<img src="img/Capstore/equipodesarrollo.jpg" alt="">
+									</div>
+									<div class="content">
+										<h2 class="name">Thomas Santiago Arevalo Santos</h2>
+										<p class="company">Equipo De Desarrollo</p>
+										<ul class="social-media">
+											<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
+											<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
+											<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
+											<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
+										</ul>
+										<a href="https://mail.google.com/mail/?view=cm&fs=1&to=thomas.aprendizsena@gmail.com"
+											target="_blank" class="btn">Contacto</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="column">
-							<div class="card">
-								<div class="img-wrap">
-									<img src="img/Capstore/diseñador.jpg" alt="">
-								</div>
-								<div class="content">
-									<h2 class="name">Samuel Fernando Mendoza Castro</h2>
-									<p class="company">Diseñador</p>
-									<ul class="social-media">
-										<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
-										<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
-										<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
-										<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
-									</ul>
+
+							<!-- Diseñador -->
+							<div class="swiper-slide">
+								<div class="card">
+									<div class="img-wrap">
+										<img src="img/Capstore/diseñador.jpg" alt="">
+									</div>
+									<div class="content">
+										<h2 class="name">Samuel Fernando Mendoza Castro</h2>
+										<p class="company">Diseñador</p>
+										<ul class="social-media">
+											<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
+											<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
+											<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
+											<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
+										</ul>
 										<a href="https://mail.google.com/mail/?view=cm&fs=1&to=mendoza1515samuel@gmail.com"
-										target="_blank" class="btn">
-										Contacto
-									</a>
+											target="_blank" class="btn">Contacto</a>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="column">
-							<div class="card">
-								<div class="img-wrap">
-									<img src="img/Capstore/tester.jpg" alt="">
-								</div>
-								<div class="content">
-									<h2 class="name">Samuel Felipe Guerrero</h2>
-									<p class="company">Tester QA</p>
-									<ul class="social-media">
-										<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
-										<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
-										<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
-										<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
-									</ul>
-									<a href="https://mail.google.com/mail/?view=cm&fs=1&to=samuelguerrero@gmail.com"
-										target="_blank" class="btn">
-										Contacto
-									</a>
+
+							<!-- Tester -->
+							<div class="swiper-slide">
+								<div class="card">
+									<div class="img-wrap">
+										<img src="img/Capstore/tester.jpg" alt="">
+									</div>
+									<div class="content">
+										<h2 class="name">Samuel Felipe Guerrero</h2>
+										<p class="company">Tester QA</p>
+										<ul class="social-media">
+											<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
+											<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
+											<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
+											<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
+										</ul>
+										<a href="https://mail.google.com/mail/?view=cm&fs=1&to=samuelguerrero@gmail.com"
+											target="_blank" class="btn">Contacto</a>
+									</div>
 								</div>
 							</div>
+
+							<!-- Analista Calidad -->
+							<div class="swiper-slide">
+								<div class="card">
+									<div class="img-wrap">
+										<img src="img/Capstore/calidad.jpg" alt="">
+									</div>
+									<div class="content">
+										<h2 class="name">Cristian David Herrera Peña</h2>
+										<p class="company">Analista De Calidad</p>
+										<ul class="social-media">
+											<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
+											<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
+											<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
+											<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
+										</ul>
+										<a href="https://mail.google.com/mail/?view=cm&fs=1&to=cristianherr511@gmail.com"
+											target="_blank" class="btn">Contacto</a>
+									</div>
+								</div>
+							</div>
+
 						</div>
 
-						
-						<div class="column">
-							<div class="card">
-								<div class="img-wrap">
-									<img src="img/Capstore/calidad.jpg" alt="">
-								</div>
-								<div class="content">
-									<h2 class="name">Cristian David Herrera Peña</h2>
-									<p class="company">Analista De Calidad</p>
-									<ul class="social-media">
-										<li class="icon"><a href="#"><i class="dbl fab fa-dribbble"></i></a></li>
-										<li class="icon"><a href="#"><i class="dvt fab fa-deviantart"></i></a></li>
-										<li class="icon"><a href="#"><i class="cdp fab fa-codepen"></i></a></li>
-										<li class="icon"><a href="#"><i class="bhn fab fa-behance"></i></a></li>
-									</ul>
-									<a href="https://mail.google.com/mail/?view=cm&fs=1&to=cristianherr511@gmail.com"
-										target="_blank" class="btn">
-										Contacto
-									</a>
-								</div>
-							</div>
-						</div>
+						<!-- Botones navegación -->
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
 					</div>
+
 				</div>
 				<!-- /row -->
 				<div class="row justify-content-center align-items-center ">
