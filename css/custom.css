@@ -31,7 +31,7 @@
   height: 100%;
 }
 
-.card {
+.carde {
   position: relative;
   width: 100%;
   padding: 10px 5px;
@@ -47,7 +47,7 @@
   transition: all 0.3s linear;
 }
 
-.card::after {
+.carde::after {
   position: absolute;
   content: '';
   width: 100%;
@@ -62,11 +62,11 @@
   /* 🔥 agregado para no bloquear clics */
 }
 
-.card:hover::after {
+.carde:hover::after {
   border-color: #ffd700;
 }
 
-.card:hover .img-wrap::after {
+.carde:hover .img-wrap::after {
   border-color: #808080;
 }
 
@@ -74,11 +74,11 @@
   color: #ffd700;
 }
 
-.card:hover .content .company {
+.carde:hover .content .company {
   color: #222;
 }
 
-.card:hover .content .btn {
+.carde:hover .content .btn {
   background: transparent;
   color: #fFd700;
 }
@@ -228,7 +228,7 @@
 }
 
 /* Ajustar que cada card mantenga su ancho */
-.card {
+.carde {
   width: 280px;
   /* ancho fijo */
   margin: auto;
