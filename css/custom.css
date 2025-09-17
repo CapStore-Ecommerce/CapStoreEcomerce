@@ -7,6 +7,46 @@
   align-items: center;
 }
 
+.container-botones {
+    background-color: #f0f0f0; /* Fondo claro */
+    border: 2px solid #b08d57;
+    position: fixed;
+    z-index: 999;
+    border-radius: 50%;
+    bottom: 90px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    animation: efecto 1.2s infinite;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.container-botones:hover {
+    transform: scale(1.1);
+}
+
+.botones {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+@keyframes efecto{
+    0%{
+        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.6);
+    }
+    100%{
+        box-shadow: 0 0 0 25px rgba(176, 141, 87, 0);
+    }
+}
+
+
 * {
   margin: 0;
   padding: 0;
