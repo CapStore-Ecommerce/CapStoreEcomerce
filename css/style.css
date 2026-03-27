@@ -2314,7 +2314,7 @@ header .main_nav .custom-search-input button[type=submit] {
   background: none;
 }
 header .main_nav .custom-search-input button[type=submit]:hover {
-  color: #004dda;
+  color: #FFD700;
 }
 header .sticky_element {
   width: 100%;
@@ -2738,9 +2738,9 @@ nav a.open_close#close_in > i:hover {
     padding: 8px 10px;
   }
   .main-menu ul ul li:hover > a {
-    color: #004dda;
-    background-color: #0044c2;
-    background-color: rgba(0, 77, 218, 0.05);
+    color: #FFD700;
+    background-color: #FFD700;
+    background-color: rgba(0, 0, 0, 0.041);
   }
   /* Megamenu */
   .main-menu ul li.megamenu {
@@ -3111,7 +3111,7 @@ nav a.open_close#close_in > i:hover {
   font-size: 21px;
   font-size: 1.3125rem;
   margin-top: 0;
-  color: #004dda;
+  color: black;
 }
 @media (max-width: 767px) {
   .menu ul li ul li a.active:after {
@@ -4544,7 +4544,7 @@ body.modal-open .mm-slideout {
   padding: 0;
 }
 .grid_item ul li a:hover {
-  background-color: #004dda;
+  background-color: #FFD700;
 }
 .grid_item ul li a:hover i {
   color: #fff;
@@ -4575,7 +4575,7 @@ body.modal-open .mm-slideout {
   display: inline-block;
 }
 .grid_item a h3:hover {
-  color: #004dda;
+  color: #FFD700;
 }
 .grid_item .price_box {
   margin-bottom: 5px;
@@ -4611,7 +4611,7 @@ body.modal-open .mm-slideout {
   color: #004dda;
 }
 .new_price {
-  color: #004dda;
+  color: BLACK;
   font-weight: 500;
   font-size: 16px;
   font-size: 1rem;
@@ -4785,7 +4785,7 @@ body.modal-open .mm-slideout {
 }
 .owl-prev i:hover,
 .owl-next i:hover {
-  color: #004dda;
+  color: #FFD700;
 }
 
 .owl-prev.disabled i:hover,
@@ -5375,7 +5375,7 @@ input.qty2:focus {
   transform: translateY(-50%);
 }
 #toTop:hover {
-  background-color: #004dda;
+  background-color: #FFD700;
 }
 
 .modal-content {
@@ -6176,6 +6176,11 @@ footer .links ul li a:after {
   background-color: #f3f3f3;
   background-color: rgba(255, 255, 255, 0.05);
   color: #ccc;
+  
+}
+#email_newsletter::placeholder {
+    color: #949494; 
+    opacity: 1;    
 }
 #newsletter input[type=email]:focus {
   border: 0;

@@ -227,7 +227,7 @@
   transition: all ease 0.25s;
   width: 40px;
   height: 99px;
-  background: no-repeat rgba(0, 77, 218, 0.85) url(../img/arrow_right.svg) center center;
+  background: no-repeat #808080 url(../img/arrow_right.svg) center center;
 }
 
 .all .slider-two .left-t:hover,
