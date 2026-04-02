@@ -7,43 +7,83 @@
   align-items: center;
 }
 
+/* Contenedor de miniaturas */
+#thumb-slider {
+    width: 100%; 
+    margin-top: 15px;
+    padding: 0;
+}
+
+/* Estilo exacto de cada miniatura */
+#thumb-slider .item {
+    width: 75px;  /* Tamaño reducido para que quepan 5 perfectamente */
+    height: 75px; 
+    border: 1px solid #e0e0e0; /* Borde gris suave original */
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 0; /* Sin bordes redondeados */
+    transition: all 0.2s ease;
+}
+
+/* Efecto cuando la miniatura está seleccionada */
+#thumb-slider .owl-item.current .item,
+#thumb-slider .item:hover {
+    border: 1px solid #000; /* Borde negro definido */
+}
+/* Asegura que las miniaturas se vean como en el original */
+.slider-two .item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80px; /* Ajusta según el tamaño de tu plantilla original */
+    width: 100%;
+    border: 1px solid #ddd; /* El borde gris que se ve en la imagen */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.slider-two .item.active {
+    border: 2px solid #000; /* Resalta la miniatura seleccionada */
+}
 .container-botones {
-    background-color: #f0f0f0; /* Fondo claro */
-    border: 2px solid #b08d57;
-    position: fixed;
-    z-index: 999;
-    border-radius: 50%;
-    bottom: 90px;
-    right: 25px;
-    width: 65px;
-    height: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
-    animation: efecto 1.2s infinite;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: #f0f0f0;
+  /* Fondo claro */
+  border: 2px solid #b08d57;
+  position: fixed;
+  z-index: 999;
+  border-radius: 50%;
+  bottom: 90px;
+  right: 25px;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  animation: efecto 1.2s infinite;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .container-botones:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .botones {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-    pointer-events: none;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 
-@keyframes efecto{
-    0%{
-        box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.6);
-    }
-    100%{
-        box-shadow: 0 0 0 25px rgba(176, 141, 87, 0);
-    }
+@keyframes efecto {
+  0% {
+    box-shadow: 0 0 0 0 rgba(176, 141, 87, 0.6);
+  }
+
+  100% {
+    box-shadow: 0 0 0 25px rgba(176, 141, 87, 0);
+  }
 }
 
 
@@ -249,8 +289,9 @@
   margin: 20px 0;
 }
 
-.swiper-button-next, .swiper-button-prev {
-    color: #ffd700 !important;
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffd700 !important;
 }
 
 /* Ajustes del slider */
@@ -284,4 +325,3 @@
 .swiper-pagination-bullet {
   background: #ffd700;
 }
-

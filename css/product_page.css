@@ -494,8 +494,8 @@
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  border-bottom: 2px solid #004dda;
-  color: #004dda;
+  border-bottom: 2px solid #FFD700;
+  color: #FFD700;
   background-color: transparent;
 }
 

@@ -3588,7 +3588,8 @@ header.version_2 .menu ul li ul li ul {
 .owl-theme .owl-dots .owl-dot {
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display:inline;
+
 }
 
 .owl-theme .owl-dots .owl-dot span {
@@ -5008,7 +5009,7 @@ input.qty2:focus {
   cursor: pointer;
 }
 .container_check input:checked ~ .checkmark {
-  background-color: #004dda;
+  background-color: #FFD700;
   border: 1px solid transparent;
 }
 .container_check .checkmark {
