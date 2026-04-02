@@ -44,6 +44,17 @@ async function cargarDatosProducto(id) {
         container.innerHTML = html;
     }
 
+    // Mostrar/ocultar countdown-wrapper según porcentaje_descuento
+    const countdown = document.getElementById('countdown-wrapper');
+    const discountLabel = document.getElementById('discount-label');
+
+    if (p.porcentaje_descuento > 0) {
+        if (countdown) countdown.style.display = 'block';
+        if (discountLabel) discountLabel.innerText = `-${p.porcentaje_descuento}%`;
+    } else {
+        if (countdown) countdown.style.display = 'none';
+    }
+
     // 4. Reseñas y Sliders
     renderizarResenas(p.resenas);
     configurarSliders(p);
