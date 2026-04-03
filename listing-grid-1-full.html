@@ -222,8 +222,8 @@
 						</div>
 						<div class="col-xl-6 col-lg-7 col-md-6 d-none d-md-block">
 							<div class="custom-search-input">
-								<input type="text" placeholder="Buscar">
-								<button type="submit"><i class="header-icon_search_custom"></i></button>
+								<input type="text" id="search-desktop" placeholder="Buscar">
+								<button type="submit" id="search-btn-desktop"><i class="header-icon_search_custom"></i></button>
 							</div>
 						</div>
 						<div class="col-xl-3 col-lg-2 col-md-3">
@@ -309,8 +309,8 @@
 					<!-- /row -->
 				</div>
 				<div class="search_mob_wp">
-					<input type="text" class="form-control" placeholder="Buscar">
-					<input type="submit" class="btn_1 full-width" value="Buscar">
+					<input type="text" id="search-mobile" class="form-control" placeholder="Buscar">
+					<input type="button" id="search-btn-mobile" class="btn_1 full-width" value="Buscar">
 				</div>
 				<!-- /search_mobile -->
 			</div>
@@ -332,6 +332,9 @@
 				<br>
 				<br>
 				<br>
+			</div>
+			<div id="search-results-info" style="display: none; text-align: center; margin-bottom: 20px;">
+				<p style="font-size: 18px; color: #555;"><strong>Resultados de búsqueda para:</strong> <span id="search-term" style="color: #004dda;"></span></p>
 			</div>
 			<!-- /toolbox -->
 
@@ -1709,6 +1712,9 @@
 	<script src="js/common_scripts.min.js"></script>
 	<script src="js/main.js"></script>
 
+	<!-- SEARCH FUNCTIONALITY -->
+	<script src="js/search-functionality.js"></script>
+
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="js/sticky_sidebar.min.js"></script>
 	<script src="js/specific_listing.js"></script>
@@ -1722,6 +1728,13 @@
 		const PAGE_SIZE = 8;
 		let currentPage = 1;
 		let totalPages = 1;
+		let searchQuery = '';
+
+		// Detectar parámetro de búsqueda en la URL
+		function getSearchQuery() {
+			const urlParams = new URLSearchParams(window.location.search);
+			return urlParams.get('search') || '';
+		}
 
 		async function cargarCatalogo(page = 1) {
 			currentPage = Math.max(1, page);
@@ -1733,9 +1746,16 @@
 			if (paginationControls) paginationControls.innerHTML = '';
 
 			const offset = (currentPage - 1) * PAGE_SIZE;
-			const { data: products, error, count } = await supabaseClient
+			let query = supabaseClient
 				.from('inventario')
-				.select('*', { count: 'exact' })
+				.select('*', { count: 'exact' });
+
+			// Aplicar filtro de búsqueda si existe
+			if (searchQuery.trim().length > 0) {
+				query = query.or(`nombre.ilike.%${searchQuery}%,descripcion_corta.ilike.%${searchQuery}%,descripcion_larga.ilike.%${searchQuery}%`);
+			}
+
+			const { data: products, error, count } = await query
 				.order('nombre', { ascending: true })
 				.range(offset, offset + PAGE_SIZE - 1);
 
@@ -1790,6 +1810,16 @@
 			});
 
 			renderPagination();
+
+			// Mostrar indicador de búsqueda si aplica
+			const searchResultsInfo = document.getElementById('search-results-info');
+			const searchTerm = document.getElementById('search-term');
+			if (searchQuery.trim().length > 0) {
+				searchTerm.textContent = `"${searchQuery}"`;
+				searchResultsInfo.style.display = 'block';
+			} else {
+				searchResultsInfo.style.display = 'none';
+			}
 		}
 
 		function renderPagination() {
@@ -1808,7 +1838,10 @@
 			paginationControls.innerHTML = html;
 		}
 
-		document.addEventListener('DOMContentLoaded', () => cargarCatalogo(1));
+		document.addEventListener('DOMContentLoaded', () => {
+			searchQuery = getSearchQuery();
+			cargarCatalogo(1);
+		});
 	</script>
 
 </body>
