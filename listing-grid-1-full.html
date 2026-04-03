@@ -31,6 +31,41 @@
 	<!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">
 
+	<style>
+		/* Estilos solo para paginación */
+		#pagination-controls {
+			padding: 0;
+			margin: 30px auto;
+			list-style: none;
+			display: flex;
+			justify-content: center;
+			gap: 8px;
+		}
+		#pagination-controls .page-item .page-link {
+			min-width: 44px;
+			border-radius: 6px;
+			border: none;
+			color: #444;
+			background-color: #fff;
+			padding: 8px 12px;
+			cursor: pointer;
+		}
+		#pagination-controls .page-item.active .page-link {
+			background-color: #FFD700;
+			color: #111;
+			border: none;
+		}
+		#pagination-controls .page-item .page-link:hover:not(:disabled) {
+			background-color: #FFD700;
+			color: #111;
+		}
+		#pagination-controls .page-item.disabled .page-link {
+			color: #bbb;
+			cursor: not-allowed;
+			background-color: #f5f5f5;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -301,7 +336,7 @@
 			<!-- /toolbox -->
 
 			<div class="container margin_30">
-				<div class="row small-gutters">
+				<div id="product-grid" class="row small-gutters">
 					<div class="col-6 col-md-4 col-xl-3">
 						<div class="grid_item">
 							<figure>
@@ -1604,7 +1639,14 @@
 				<!-- /row -->
 			</div>
 			<!-- /container -->
-		</main>
+<div class="row mt-3">
+					<div class="col-12">
+						<nav aria-label="Paginación productos">
+							<ul id="pagination-controls" class="pagination justify-content-center"></ul>
+						</nav>
+					</div>
+				</div>
+			</main>
 		<!-- /main -->
 
 		<footer class="revealed">
@@ -1634,14 +1676,6 @@
 								</div>
 							</div>
 							<div class="follow_us">
-								<!-- <h5>Follow Us</h5>
-								<ul>
-									<li><a href="#0"><i class="bi bi-facebook"></i></a></li>
-									<li><a href="#0"><i class="bi bi-twitter-x"></i></a></li>
-									<li><a href="#0"><i class="bi bi-instagram"></i></a></li>
-									<li><a href="#0"><i class="bi bi-tiktok"></i></a></li>
-									<li><a href="#0"><i class="bi bi-whatsapp"></i></a></li>
-								</ul> -->
 							</div>
 						</div>
 					</div>
@@ -1678,6 +1712,104 @@
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="js/sticky_sidebar.min.js"></script>
 	<script src="js/specific_listing.js"></script>
+
+	<!-- SUPABASE + CATÁLOGO DINÁMICO -->
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<script>
+		const SUBAPASE_URL = "https://fyfnerpebeynjpbqwyci.supabase.co";
+		const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5Zm5lcnBlYmV5bmpwYnF3eWNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MTE3MzgsImV4cCI6MjA5MDI4NzczOH0.vSkfrV_3yx-LXJh77OSBu3jRXgnDRaePS93P77lm9E0";
+		const supabaseClient = supabase.createClient(SUBAPASE_URL, SUPABASE_KEY);
+		const PAGE_SIZE = 8;
+		let currentPage = 1;
+		let totalPages = 1;
+
+		async function cargarCatalogo(page = 1) {
+			currentPage = Math.max(1, page);
+			const productGrid = document.getElementById('product-grid');
+			const paginationControls = document.getElementById('pagination-controls');
+			if (!productGrid) return;
+
+			productGrid.innerHTML = '<div class="col-12 text-center py-4">Cargando catálogo...</div>';
+			if (paginationControls) paginationControls.innerHTML = '';
+
+			const offset = (currentPage - 1) * PAGE_SIZE;
+			const { data: products, error, count } = await supabaseClient
+				.from('inventario')
+				.select('*', { count: 'exact' })
+				.order('nombre', { ascending: true })
+				.range(offset, offset + PAGE_SIZE - 1);
+
+			if (error) {
+				console.error('Error al cargar inventario', error);
+				productGrid.innerHTML = '<div class="col-12 text-danger text-center py-4">Error cargando catálogo.</div>';
+				return;
+			}
+
+			if (!products || products.length === 0) {
+				productGrid.innerHTML = '<div class="col-12 text-center py-4">No hay productos disponibles.</div>';
+				return;
+			}
+
+			totalPages = Math.max(1, Math.ceil((count || products.length) / PAGE_SIZE));
+			productGrid.innerHTML = '';
+
+			products.forEach(producto => {
+				const imageUrl = producto.imagen_url_1 || producto.imagen || 'img/products/product_placeholder_square_medium.jpg';
+				const discount = Number(producto.porcentaje_descuento || 0);
+				const precioActual = Number(producto.precio || 0);
+				const oldPrice = Number(producto.precio_antiguo || producto.precio || 0);
+				const hasDiscount = discount > 0 && oldPrice > precioActual;
+				const ribbon = hasDiscount
+					? `<span class="ribbon off">-${discount}%</span>`
+					: (producto.es_nuevo ? '<span class="ribbon new">Nuevo</span>' : (producto.es_hot ? '<span class="ribbon hot">Hot</span>' : ''));
+
+				const productoHTML = `
+					<div class="col-6 col-md-4 col-xl-3">
+						<div class="grid_item">
+							${ribbon}
+							<figure>
+								<a href="product.html?id=${producto.id}">
+									<img class="img-fluid lazy" src="${imageUrl}" data-src="${imageUrl}" alt="${producto.nombre || 'Producto'}">
+								</a>
+								${hasDiscount ? '<div data-countdown="2026/04/15" class="countdown"></div>' : ''}
+							</figure>
+							<a href="product.html?id=${producto.id}"><h3>${producto.nombre || 'Sin Nombre'}</h3></a>
+							<div class="price_box">
+								<span class="new_price">$${precioActual.toLocaleString()}</span>
+								${hasDiscount ? `<span class="old_price">$${oldPrice.toLocaleString()}</span>` : ''}
+							</div>
+							<ul>
+								<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to favorites"><i class="ti-heart"></i><span>Add to favorites</span></a></li>
+								<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to compare"><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
+								<li><a href="#0" class="tooltip-1" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"><i class="ti-shopping-cart"></i><span>Add to cart</span></a></li>
+							</ul>
+						</div>
+					</div>`;
+
+				productGrid.insertAdjacentHTML('beforeend', productoHTML);
+			});
+
+			renderPagination();
+		}
+
+		function renderPagination() {
+			const paginationControls = document.getElementById('pagination-controls');
+			if (!paginationControls) return;
+
+			let html = '';
+			html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><button class="page-link" ${currentPage === 1 ? 'disabled' : ''} onclick="cargarCatalogo(${currentPage - 1})">&larr;</button></li>`;
+
+			for (let i = 1; i <= totalPages; i++) {
+				html += `<li class="page-item ${currentPage === i ? 'active' : ''}"><button class="page-link" onclick="cargarCatalogo(${i})">${i}</button></li>`;
+			}
+
+			html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}"><button class="page-link" ${currentPage === totalPages ? 'disabled' : ''} onclick="cargarCatalogo(${currentPage + 1})">&rarr;</button></li>`;
+
+			paginationControls.innerHTML = html;
+		}
+
+		document.addEventListener('DOMContentLoaded', () => cargarCatalogo(1));
+	</script>
 
 </body>
 
