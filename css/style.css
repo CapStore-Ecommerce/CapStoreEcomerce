@@ -3104,6 +3104,22 @@ nav a.open_close#close_in > i:hover {
   background-color: #0044c2;
   background-color: rgba(0, 77, 218, 0.04);
 }
+
+.menu ul li ul li a:hover:after {
+  font-family: "themify";
+  content: "\e649";
+  float: right;
+  font-size: 21px;
+  font-size: 1.3125rem;
+  margin-top: 0;
+  color: #000000;
+}
+@media (max-width: 767px) {
+  .menu ul li ul li a:hover:after {
+    transform: rotate(90deg);
+  }
+}
+
 .menu ul li ul li a.active:after {
   font-family: "themify";
   content: "\e649";

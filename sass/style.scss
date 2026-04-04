@@ -3052,6 +3052,18 @@ a.show-submenu-mega + .menu-wrapper.show_mega,
 
 					&:hover {
 						@include rgba(bg, $color-1, 0.04);
+
+						&:after {
+							font-family: 'themify';
+							content: "\e649";
+							float: right;
+							@include fontSize(21px);
+							margin-top: 0;
+							color: $color-1;
+							@include mobile {
+								transform: rotate(90deg);
+							}
+						}
 					}
 
 					&.active {

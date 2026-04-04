@@ -1,49 +1,28 @@
 /**
  * Funcionalidad de búsqueda unificada para CapStore
- * Redirige a listing-grid-1-full.html con parámetro de búsqueda
  */
+function performSearch() {
+	const searchDesktop = document.getElementById('search-desktop');
+	const searchMobile = document.getElementById('search-mobile');
+	const query = (searchDesktop?.value || searchMobile?.value || '').trim();
 
-function initializeSearch() {
-	function performSearch() {
-		const searchDesktop = document.getElementById('search-desktop');
-		const searchMobile = document.getElementById('search-mobile');
-		const query = (searchDesktop?.value || searchMobile?.value || '').trim();
-		
-		if (query.length > 0) {
-			window.location.href = `listing-grid-1-full.html?search=${encodeURIComponent(query)}`;
+	if (query.length > 0) {
+		window.location.href = `listing-grid-1-full.html?search=${encodeURIComponent(query)}`;
+	}
+}
+
+// Escuchar clics en el botón de búsqueda
+document.addEventListener('click', function (e) {
+	if (e.target.closest('#search-btn-desktop') || e.target.closest('#search-btn-mobile')) {
+		performSearch();
+	}
+});
+
+// Escuchar la tecla Enter en el input
+document.addEventListener('keypress', function (e) {
+	if (e.key === 'Enter') {
+		if (e.target.id === 'search-desktop' || e.target.id === 'search-mobile') {
+			performSearch();
 		}
 	}
-
-	// Event listeners para búsqueda desktop
-	const searchBtnDesktop = document.getElementById('search-btn-desktop');
-	const searchInputDesktop = document.getElementById('search-desktop');
-	
-	if (searchBtnDesktop) {
-		searchBtnDesktop.addEventListener('click', performSearch);
-	}
-	if (searchInputDesktop) {
-		searchInputDesktop.addEventListener('keypress', (e) => {
-			if (e.key === 'Enter') performSearch();
-		});
-	}
-
-	// Event listeners para búsqueda móvil
-	const searchBtnMobile = document.getElementById('search-btn-mobile');
-	const searchInputMobile = document.getElementById('search-mobile');
-	
-	if (searchBtnMobile) {
-		searchBtnMobile.addEventListener('click', performSearch);
-	}
-	if (searchInputMobile) {
-		searchInputMobile.addEventListener('keypress', (e) => {
-			if (e.key === 'Enter') performSearch();
-		});
-	}
-}
-
-// Ejecutar cuando el DOM esté cargado
-if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', initializeSearch);
-} else {
-	initializeSearch();
-}
+});

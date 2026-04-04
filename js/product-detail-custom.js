@@ -1,6 +1,6 @@
-const SUBAPASE_URL = "https://fyfnerpebeynjpbqwyci.supabase.co";
+const SUPABASE_URL = "https://fyfnerpebeynjpbqwyci.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5Zm5lcnBlYmV5bmpwYnF3eWNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3MTE3MzgsImV4cCI6MjA5MDI4NzczOH0.vSkfrV_3yx-LXJh77OSBu3jRXgnDRaePS93P77lm9E0";
-const supabaseClient = supabase.createClient(SUBAPASE_URL, SUPABASE_KEY);
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
